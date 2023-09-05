@@ -1,0 +1,2 @@
+dailyawards_interval (Interval for awards in seconds) int 86400
+dailyawards_dayslimit (Awarding days limit) int 365
