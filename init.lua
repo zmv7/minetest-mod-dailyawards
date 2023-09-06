@@ -20,6 +20,19 @@ local awards = {
 
 local uniaward = "default:mese_crystal"
 
+if minetest.get_modpath("currency") then
+	awards = {
+		"currency:minegeld",
+		"currency:minegeld 3",
+		"currency:minegeld 6",
+		"currency:minegeld_5 2",
+		"currency:minegeld_10 2",
+		"currency:minegeld_10 3",
+		"currency:minegeld_50 2",
+	}
+	uniaward = "currency:minegeld_10"
+end
+
 local function giveaward(name, day)
 	local player = minetest.get_player_by_name(name)
 	if not player then
