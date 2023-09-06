@@ -16,22 +16,23 @@ local awards = {
 	"default:diamond 4",
 	"default:diamond 8",
 	"default:diamondblock 2",
-	"default:mese_crystal"
 }
+
+local uniaward = "default:mese_crystal"
 
 local function giveaward(name, day)
 	local player = minetest.get_player_by_name(name)
 	if not player then
 		return
 	end
-	local award = awards[day] or awards[#awards].." "..day
+	local award = awards[day] or uniaward.." "..day
 	local inv = player:get_inventory()
 	if inv and inv:room_for_item("main",award) then
 		inv:add_item("main",award)
 	else
 		minetest.add_item(player:get_pos(),award)
 	end
-	minetest.chat_send_player(name,minetest.colorize("lime","You got an award for day "..day.."!"))
+	minetest.chat_send_player(name,minetest.colorize("lime","You got an award for day "..day.."! Next award: "..(awards[day+1] or uniaward.." "..day+1)))
 end
 
 local function checkaward(name)
